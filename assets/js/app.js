@@ -23,13 +23,9 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
   UXORA PROGRES CIRCLE JS INIT
   UXORA MAGNIFIC PUPOP JS INIT
   UXORA BRAND SLIDER INIT
+  UXORA INEGRATION JS INIT
   UXORA COUNTER JS INIT
   UXORA TSTIMONIAL SLIDER INIT
-  UXORA CURRENT YEAR JS INIT
-  UXORA AOS ANIMATION JS INIT
-  UXORA PORTFOLIO MASONAY FILTER JS
-  UXORA TOGGLE PASSOWRD JS INIT
-  
   
   -------------------------------------------------------------------*/
 
@@ -189,6 +185,11 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
         }]
       });
     }
+
+    /*--------------------------------------------------------------
+    UXORA INTEGRATION JS INIT
+    --------------------------------------------------------------*/
+
     var i_slider_data = $('.uxora-intg-slider-js-init');
     if (i_slider_data.is_exist()) {
       i_slider_data.slick({
@@ -300,209 +301,9 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       window.addEventListener("scroll", activate);
       activate();
     });
-    var $items = $(".uxora-process-wrap");
-    if ($items.length) {
-      $items.on("mouseover", function () {
-        // Remove 'hovered' class from all items
-        $items.removeClass("hovered");
-
-        // Add 'hovered' class to the current item
-        $(this).addClass("hovered");
-      });
-    }
-    (function ($) {
-      $.fn.skillBars = function (options) {
-        var settings = $.extend({
-          from: 0,
-          // number start
-          to: false,
-          // number end
-          speed: 1000,
-          // how long it should take to count between the target numbers
-          interval: 100,
-          // how often the element should be updated
-          decimals: 0,
-          // the number of decimal places to show
-          onUpdate: null,
-          // callback method for every time the element is updated,
-          onComplete: null,
-          // callback method for when the element finishes updating
-          /*onComplete: function(from) {
-                    console.debug(this);
-                }*/
-          classes: {
-            skillBarBar: '.skillbar-bar',
-            skillBarPercent: '.skill-bar-percent'
-          }
-        }, options);
-        return this.each(function () {
-          var obj = $(this),
-            to = settings.to != false ? settings.to : parseInt(obj.attr('data-percent'));
-          if (to > 100) {
-            to = 100;
-          }
-          ;
-          var from = settings.from,
-            loops = Math.ceil(settings.speed / settings.interval),
-            increment = (to - from) / loops,
-            loopCount = 0,
-            interval = setInterval(updateValue, settings.interval);
-          obj.find(settings.classes.skillBarBar).animate({
-            width: parseInt(obj.attr('data-percent')) + '%'
-          }, settings.speed);
-          function updateValue() {
-            from += increment;
-            loopCount++;
-            $(obj).find(settings.classes.skillBarPercent).text(from.toFixed(settings.decimals) + '%');
-            if (typeof settings.onUpdate == 'function') {
-              settings.onUpdate.call(obj, from);
-            }
-            if (loopCount >= loops) {
-              clearInterval(interval);
-              from = to;
-              if (typeof settings.onComplete == 'function') {
-                settings.onComplete.call(obj, from);
-              }
-            }
-          }
-        });
-      };
-    })(jQuery);
   }); /*End document ready*/
 
   $(window).on("resize", function () {}); // end window resize
-
-  /*--------------------------------------------------------------
-  UXORA MAP JS INIT
-  ------------------------------------------------------------*/
-  var google_map = $('#map');
-  if (google_map.is_exist()) {
-    var init = function init() {
-      var mapOptions = {
-        zoom: 11,
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: true,
-        disableDefaultUI: true,
-        center: new google.maps.LatLng(40.6700, -73.9400),
-        styles: [{
-          "featureType": "landscape.man_made",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#f7f1df"
-          }]
-        }, {
-          "featureType": "landscape.natural",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#d0e3b4"
-          }]
-        }, {
-          "featureType": "landscape.natural.terrain",
-          "elementType": "geometry",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "poi",
-          "elementType": "labels",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "poi.business",
-          "elementType": "all",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "poi.medical",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#fbd3da"
-          }]
-        }, {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#bde6ab"
-          }]
-        }, {
-          "featureType": "road",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "road",
-          "elementType": "labels",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#ffe15f"
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#efd151"
-          }]
-        }, {
-          "featureType": "road.arterial",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#ffffff"
-          }]
-        }, {
-          "featureType": "road.local",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "black"
-          }]
-        }, {
-          "featureType": "transit.station.airport",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#cfb2db"
-          }]
-        }, {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#a2daf2"
-          }]
-        }]
-      };
-      var mapElement = document.getElementById('map');
-      var map = new google.maps.Map(mapElement, mapOptions);
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(40.6700, -73.9400),
-        map: map,
-        // icon: 'assets/images/all-img/contact/map.png',
-        title: 'uxora'
-      });
-      var contentString = '<div id="content">' + '<div id="tpw">' + '<h3>uxora' + '</div>';
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString,
-        maxWidth: 280
-      });
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function () {
-        marker.setAnimation(null);
-      }, 750); //time it takes for one bounce   
-
-      google.maps.event.addListener(marker, 'click', function () {
-        infowindow.open(map, marker);
-      });
-    };
-    google.maps.event.addDomListener(window, 'load', init);
-  }
 })(jQuery);
 
 /*--------------------------------------------------------------
@@ -525,29 +326,6 @@ $(document).ready(function () {
       $('.coreMonthlyPrice,.proMonthlyPrice').hide();
       $('.coreAnnuallyText,.coreAnnuallyPrice, .proAnnuallyPrice').show();
     }
-  }
-});
-
-/*--------------------------------------------------------------
-UXORA TOGGLE PASSOWRD JS INIT
-------------------------------------------------------------*/
-
-$(".toggle-password").click(function () {
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
-$(".toggle-password2").click(function () {
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
   }
 });
 
